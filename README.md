@@ -1,3 +1,9 @@
+# What's this project objective?
+
+It's to my personal development as a Frontend Dev with Next.js, while doing a clone of Zoom.
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
