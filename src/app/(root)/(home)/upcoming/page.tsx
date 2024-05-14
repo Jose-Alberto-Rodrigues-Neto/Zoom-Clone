@@ -1,4 +1,3 @@
-export default function Upcoming(){
-    return<>
-    </>
+export default function Upcoming() {
+  return <></>;
 }
