@@ -1,5 +1,3 @@
-"use client";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { ReactNode } from "react";
@@ -18,7 +16,7 @@ interface NavItemProps {
   className?: string;
 }
 
-const navItemData: NavItemProps[] = [
+export const navItemData: NavItemProps[] = [
   {
     path: "/",
     name: "Home",
@@ -46,7 +44,7 @@ const navItemData: NavItemProps[] = [
   },
 ];
 
-function SidebarItems({ name, icon, path, className }: NavItemProps) {
+export function SidebarItems({ name, icon, path, className }: NavItemProps) {
   return (
     <div className={`${className}`}>
       <Link
@@ -61,18 +59,16 @@ function SidebarItems({ name, icon, path, className }: NavItemProps) {
 }
 
 export default function Sidebar() {
-  const pathname = usePathname();
   return (
     <section className="sticky left-0 top-0 flex h-screen w-fit flex-col justify-between bg-dark-1 p-2 pt-20 text-white max-sm:hidden lg:w-[264px]">
       <div className="flex flex-1 flex-col">
-        {navItemData.map((link) => {
-          const isActive =
-            pathname === link.path || pathname.startsWith(link.path);
+        {navItemData.map((key) => {
           return (
             <SidebarItems
-              name={link.name}
-              icon={link.icon}
-              path={link.path}
+              key={key.name}
+              name={key.name}
+              icon={key.icon}
+              path={key.path}
               className="p-1"
             />
           );
