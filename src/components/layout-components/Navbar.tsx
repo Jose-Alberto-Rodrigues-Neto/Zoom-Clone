@@ -20,9 +20,9 @@ export default function Navbar() {
 
       <div className="flex justify-between gap-5">
         <SignedIn>
-          <UserButton/>
+          <UserButton />
         </SignedIn>
-        
+
         <Mobilenav />
       </div>
     </nav>
