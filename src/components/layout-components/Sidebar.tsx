@@ -30,7 +30,7 @@ export const navItemData: NavItemProps[] = [
   {
     name: "Previous",
     icon: <IoCheckbox />,
-    path: "/Previous",
+    path: "/previous",
   },
   {
     name: "Recordings",
@@ -49,7 +49,7 @@ export function SidebarItems({ name, icon, path, className }: NavItemProps) {
     <div className={`${className}`}>
       <Link
         href={path}
-        className="flex flex-row gap-4 items-center text-lg w-full p-4 rounded-sm hover:bg-cyan-500"
+        className="flex flex-row gap-4 items-center text-lg w-full p-4 rounded-sm hover:bg-cyan-500 hover:rounded-xl"
       >
         {icon}
         {name}
