@@ -1,5 +1,3 @@
-"use client"
-
 import { ReactNode } from "react"
 
 interface MeetingCardProps{
@@ -18,7 +16,6 @@ export default function MeetingCard({
     return(
         <div 
             className={`${bgColor} px-4 py-6 flex flex-col justify-between w-full xl:max-w-72 min-h-64 rounded-xl cursor-pointer`}
-            onClick={() => {}}
         >
            <div className="flex justify-center items-center glassmorphism size-12 rounded">
                 {icon}
