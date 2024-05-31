@@ -2,6 +2,14 @@
 
 It's to my personal development as a Frontend Dev with Next.js, while doing a clone of Zoom.
 
+# What's [Clerk](https://clerk.com)?
+
+[It's _"free"_](https://clerk.com/pricing)
+
+# What's [getStrem](https://getstream.io)?
+
+[It's _"free"_](https://getstream.io/pricing/#video)
+
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
