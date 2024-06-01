@@ -1,45 +1,44 @@
-"use client"
-import { useUser } from '@clerk/nextjs';
+"use client";
+import { useUser } from "@clerk/nextjs";
 import {
-    StreamCall,
-    StreamVideo,
-    StreamVideoClient,
-    User,
-  } from '@stream-io/video-react-sdk';
-import { ReactNode, useEffect, useState } from 'react';
-import { tokenProvider } from '../actions/stream.actions';
-import { Client } from '@clerk/nextjs/server';
-import Loader from '@/components/default-loader/Loader';
-  
-  const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
+  StreamCall,
+  StreamVideo,
+  StreamVideoClient,
+  User,
+} from "@stream-io/video-react-sdk";
+import { ReactNode, useEffect, useState } from "react";
+import { tokenProvider } from "../actions/stream.actions";
+import { Client } from "@clerk/nextjs/server";
+import Loader from "@/components/default-loader/Loader";
 
-  export default function StreamVideoProvider({children}: { children: ReactNode}){
-    const [videoClient, setVideoClient] = useState<StreamVideoClient>()
+const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 
-    const { user, isLoaded } = useUser();
+export default function StreamVideoProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const [videoClient, setVideoClient] = useState<StreamVideoClient>();
 
-    useEffect(() => {
-        if(!isLoaded || !user) return;
-        if(!apiKey) throw new Error("Stream API key missing");
+  const { user, isLoaded } = useUser();
 
-        const client = new StreamVideoClient({
-            apiKey,
-            user:{
-                id: user?.id,
-                name: user?.username || user?.id,
-                image: user?.imageUrl,
-            },
-            tokenProvider,
-        })
-        setVideoClient(client)
+  useEffect(() => {
+    if (!isLoaded || !user) return;
+    if (!apiKey) throw new Error("Stream API key missing");
 
-    }, [user, isLoaded])
+    const client = new StreamVideoClient({
+      apiKey,
+      user: {
+        id: user?.id,
+        name: user?.username || user?.id,
+        image: user?.imageUrl,
+      },
+      tokenProvider,
+    });
+    setVideoClient(client);
+  }, [user, isLoaded]);
 
-    if(!videoClient) return <Loader/>
+  if (!videoClient) return <Loader />;
 
-    return (
-      <StreamVideo client={videoClient}>
-        {children}
-      </StreamVideo>
-    );
-  };
+  return <StreamVideo client={videoClient}>{children}</StreamVideo>;
+}

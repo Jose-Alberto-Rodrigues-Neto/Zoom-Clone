@@ -4,9 +4,7 @@ import StreamVideoProvider from "../../../providers/StremClientProvider";
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <main>
-      <StreamVideoProvider>
-        {children}
-      </StreamVideoProvider>
+      <StreamVideoProvider>{children}</StreamVideoProvider>
     </main>
   );
 };
