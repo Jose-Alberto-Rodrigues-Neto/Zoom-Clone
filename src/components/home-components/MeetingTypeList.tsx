@@ -6,6 +6,8 @@ import { useUser } from "@clerk/nextjs";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast"
+
 
 export default function MeetingTypeList(){
     const newMeetingCard = <MeetingCard icon={<BiPlus className="text-white text-4xl"/>} title="New Meeting" subtitle="Start an instant meeting!" bgColor="bg-orange-500"/>
@@ -13,6 +15,7 @@ export default function MeetingTypeList(){
     const viewRecordingsCard = <MeetingCard icon={<BiVideo className="text-white text-4xl"/>} title="View Recordings" subtitle="Check out your recordings." bgColor="bg-purple-500"/>
     const scheduleMeetingCard = <MeetingCard icon={<BiCalendar className="text-white text-4xl"/>} title="Schedule Meeting" subtitle="Plain your meeting." bgColor="bg-yellow-400"/>
 
+    const { toast } = useToast()
     const router = useRouter();
     const{ user } =  useUser()
     const client = useStreamVideoClient()
@@ -27,6 +30,12 @@ export default function MeetingTypeList(){
         if(!client || !user) return;
 
         try{
+            if(!values.dateTime){
+                toast({
+                    title: "Please select a date and time!"
+                })
+                return;
+            }
             const id = crypto.randomUUID()
             const call = client.call("default", id)
 
@@ -48,8 +57,15 @@ export default function MeetingTypeList(){
             if(!values.description){
                 router.push(`/meeting/${call.id}`)
             }
+
+            toast({
+                title: "Meeting created"
+            })
         }catch(err){
             console.log(err)
+            toast({
+                title: "Failed to create meeting!"
+              })
         }
     }
     return(
