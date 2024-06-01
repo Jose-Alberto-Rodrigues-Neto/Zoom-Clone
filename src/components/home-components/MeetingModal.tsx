@@ -8,9 +8,7 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
-import { DialogClose } from '@radix-ui/react-dialog'
 import Image from 'next/image'
-import { cn } from '@/lib/utils'
 import { Button } from '../ui/button'
   
 
